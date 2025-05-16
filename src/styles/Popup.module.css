@@ -1,0 +1,57 @@
+.fab {
+  position: fixed;
+  z-index: 9999;
+  width: 62px;
+  height: 62px;
+  background: #219178;
+  color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.15);
+  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 32px;
+  right: 32px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.fab.bottom-left {
+  left: 32px;
+  right: auto;
+}
+.fab.bottom-right {
+  right: 32px;
+}
+.fab.dark {
+  background: #111;
+}
+.fab.light {
+  background: #219178;
+}
+.popupOverlay {
+  position: fixed;
+  z-index: 9998;
+  inset: 0;
+  background: rgba(30, 40, 80, 0.18);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.popup {
+  width: 380px;
+  max-width: 98vw;
+  height: 620px;
+  max-height: 94vh;
+  margin: 20px 38px;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 8px 38px rgba(20, 32, 54, 0.17);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+[data-theme="dark"] {
+  background: #18191f !important;
+  color: #f7f7f7;
+}

@@ -1,0 +1,134 @@
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.center {
+  margin: auto;
+  text-align: center;
+  padding-top: 64px;
+  width: 100%;
+  max-width: 680px;
+}
+.greeting {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 24px;
+  color: #32806c;
+  line-height: 1.2;
+}
+.hello {
+  color: #32806c;
+  font-weight: 700;
+  font-size: 2.2rem;
+}
+.question {
+  color: #202124;
+  font-weight: 400;
+  font-size: 1.45rem;
+}
+.chipBar {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 26px;
+  margin-top: 18px;
+}
+.chip {
+  padding: 10px 24px;
+  border-radius: 9999px;
+  border: 1.5px solid #e2e5e6;
+  background: #f7faf9;
+  color: #232323;
+  font-size: 1.13rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  position: relative;
+  transition: border 0.16s, background 0.16s, color 0.16s;
+}
+.chipIcon {
+  font-size: 1.28rem;
+  margin-right: 2px;
+}
+.chip.active,
+.chip:focus {
+  border: 2.5px solid #219178;
+  background: #e8faf6;
+  color: #219178;
+}
+.newBadge {
+  margin-left: 7px;
+  background: #ffe159;
+  color: #434343;
+  font-size: 0.75rem;
+  padding: 1.5px 8px;
+  border-radius: 7px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  position: relative;
+  top: -2px;
+}
+.inputBlock {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 32px 0 10px 0;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.input {
+  width: 100%;
+  border-radius: 14px;
+  border: 1.3px solid #e2e2e2;
+  padding: 16px 18px;
+  font-size: 1.15rem;
+  background: #fafbfc;
+  outline: none;
+  margin-right: 8px;
+}
+.sendBtn {
+  background: #191919;
+  color: #fff;
+  border: none;
+  border-radius: 13px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  cursor: pointer;
+  opacity: 0.6;
+}
+.sendBtn:enabled {
+  opacity: 1;
+}
+.sendIcon {
+  font-size: 1.55rem;
+  margin-left: 2px;
+}
+.helperText {
+  font-size: 1rem;
+  color: #858585;
+  margin-bottom: 20px;
+}
+.footer {
+  margin: auto auto 0 auto;
+  padding: 16px 0 10px 0;
+  color: #7b7b7b;
+  font-size: 0.98rem;
+  text-align: center;
+}
+.mini {
+  font-size: 0.93rem;
+}
+.footer a {
+  color: #6c7786;
+  text-decoration: underline;
+}

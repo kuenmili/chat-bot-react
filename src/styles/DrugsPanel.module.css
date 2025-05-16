@@ -1,0 +1,132 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(60, 80, 110, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+.panel {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 44px rgba(31, 49, 86, 0.12);
+  min-width: 390px;
+  max-width: 420px;
+  padding: 32px 32px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.icon {
+  font-size: 1.5rem;
+  color: #2a3a7b;
+}
+.title {
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: #2a3a7b;
+  flex: 1;
+}
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #525a7b;
+  margin-left: auto;
+  margin-right: -7px;
+}
+.subtitle {
+  font-size: 1.05rem;
+  color: #222;
+  font-weight: 700;
+  margin-top: 8px;
+}
+.desc {
+  font-size: 1rem;
+  color: #31315a;
+  margin-bottom: 10px;
+}
+.emptyMsg {
+  color: #a3a3a3;
+  font-style: italic;
+  font-size: 0.97rem;
+  margin-bottom: 7px;
+}
+.medsList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+.medItem {
+  background: #f3f7fb;
+  margin-bottom: 6px;
+  padding: 6px 11px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  font-size: 1.04rem;
+  justify-content: space-between;
+}
+.removeBtn {
+  margin-left: 8px;
+  background: none;
+  border: none;
+  color: #a34545;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.addRow {
+  display: flex;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+.input {
+  flex: 1;
+  padding: 10px 13px;
+  border-radius: 10px;
+  border: 1.2px solid #e2e5e6;
+  font-size: 1rem;
+}
+.addBtn {
+  background: #191919;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  opacity: 0.85;
+  transition: opacity 0.15s;
+}
+.addBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.sendBtn {
+  background: #e2e5e6;
+  color: #868686;
+  font-weight: 700;
+  font-size: 1.09rem;
+  border: none;
+  border-radius: 9px;
+  padding: 13px 0;
+  margin-top: 10px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.sendBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -1,0 +1,14 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+import ZentisChatWidget from "./ZentisChatWidget";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <ZentisChatWidget
+      chatType="clinical"
+      doctor={{ name: "mili" }}
+      endpoint="http://localhost:3000/zentis"
+      apiKey="eyJraWQiOiJYOEhDN3lCaEtPVGNzNGdIRXl3OVljcDRkUVFHTDEwbWplY0J6b1wvVzlHND0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJkNDA4ODQ4OC1hMDQxLTcwMTEtYjAxYS03Mzk3Mzk5NGMxMTEiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9uNHYzcXZTaXQiLCJjbGllbnRfaWQiOiIyMHFsNDk5dTllZnM1bmdxZzFsMXJxb28yOCIsIm9yaWdpbl9qdGkiOiJiYzk4ZTdmZS1lMGUxLTRhZGItOGFhOS1jN2ZkMDNmOGQyMDIiLCJldmVudF9pZCI6ImIzY2Q3ZTdkLTdjMTQtNGUyMS1hMmEzLTEyODRhOThkOTE0NiIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE3NDczNDkwODUsImV4cCI6MTc0NzQyMzUwMiwiaWF0IjoxNzQ3NDE5OTAyLCJqdGkiOiIzN2Y1ODNkYi1mYjM4LTRmMjMtYTNkMC1kMGY0ZWJjOTY5NTQiLCJ1c2VybmFtZSI6ImQ0MDg4NDg4LWEwNDEtNzAxMS1iMDFhLTczOTczOTk0YzExMSJ9.iUbta6uDQRHUNBHbk8V2EGe-ZlwgZbFsxL3QFv9xDrBU_h0My3u6NdlFFDX7EhXSr00v5WX6KTO1N0WXN-qIzR6CWXiHlWrXVLURxUxyRU48qUMCGljmE4ME7jIMyqCpxYLD7yKCVGGF_WPhuCSY1vTWSzkOs5Xj6NEKEe5VHLz3uUNfxxus30ZSDH_41pawj6mmWEb58MDaXfq-gXWQvxHy6dCwz_pvOMsdMdYXAhCcgCITpPrsLnDIK7EG2WckLua-THb3foRKpDlitpj9qVS7gnmIF5yDJY9X-xU7Z0zAUwVaj1nnEqD_s61HpBl-NFMto3LFwRR5SDcInKE1KQ"
+    />
+  </React.StrictMode>
+);

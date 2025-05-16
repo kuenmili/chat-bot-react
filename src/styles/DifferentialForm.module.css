@@ -1,0 +1,78 @@
+.wrapper {
+  margin: 70px auto 0 auto;
+  max-width: 650px;
+  padding: 0 14px;
+}
+.topBar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  align-items: center;
+}
+.chip {
+  padding: 9px 18px;
+  border-radius: 16px;
+  border: 1.5px solid #e2e5e6;
+  background: #f7faf9;
+  color: #232323;
+  font-size: 1.07rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: border 0.15s, background 0.15s, color 0.15s;
+}
+.chip.active {
+  border: 2px solid #edb272;
+  background: #f8f2e7;
+  color: #edb272;
+}
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  font-weight: 700;
+  font-size: 1.18rem;
+  margin-bottom: 20px;
+  color: #edb272;
+}
+.input {
+  width: 100%;
+  border-radius: 14px;
+  border: 1.3px solid #e2e2e2;
+  padding: 18px 18px;
+  font-size: 1.13rem;
+  background: #fafbfc;
+  outline: none;
+  margin-bottom: 13px;
+}
+.sendBtn {
+  background: #191919;
+  color: #fff;
+  border: none;
+  border-radius: 13px;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.45rem;
+  cursor: pointer;
+  margin-bottom: 10px;
+  opacity: 0.5;
+}
+.sendBtn:enabled {
+  opacity: 1;
+}
+.sendIcon {
+  font-size: 1.35rem;
+}
+.helperText {
+  font-size: 1rem;
+  color: #858585;
+  margin-bottom: 6px;
+  margin-top: 8px;
+  text-align: center;
+}
