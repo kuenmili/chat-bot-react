@@ -50,13 +50,15 @@ export const useZentisFlow = ({
       { role: "user", text: msg, timestamp: Date.now() },
     ]);
     try {
+      const headers = new Headers();
+      headers.append("Accept", "application/json, text/plain, */*");
+      headers.append("Content-Type", "application/json");
+      headers.append("Authorization", apiKey);
+
       const res = await fetch(ENDPOINTS[realMode], {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: apiKey,
-        },
-        body: JSON.stringify({ reason: msg, doctor }),
+        headers,
+        body: JSON.stringify({ reason: msg }),
       });
       const json = await res.json();
       setChat((chat) => [

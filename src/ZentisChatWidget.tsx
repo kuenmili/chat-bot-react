@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./styles/Popup.module.css";
 import MainChat from "./MainChat";
 
-interface Props {
+export interface ZentisProps {
   apiKey: string;
   doctor: { name: string; specialty?: string; [key: string]: any };
   chatType: "clinical" | "differential" | "drugs";
@@ -12,7 +12,7 @@ interface Props {
   buttonLabel?: string;
 }
 
-const ZentisChatWidget: React.FC<Props> = (props) => {
+const ZentisChatWidget: React.FC<ZentisProps> = (props) => {
   const {
     apiKey,
     doctor,
