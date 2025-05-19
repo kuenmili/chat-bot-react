@@ -12,10 +12,11 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: "src/zentis-webcomponent.tsx",
+      entry: "src/index.ts",
       name: "ZentisChatWidget",
-      fileName: "zentis-chat-widget-webc",
-      formats: ["umd"],
+      fileName: (format) =>
+        `zentis-chat-widget.${format === "es" ? "es" : "umd"}.js`,
+      formats: ["es", "umd"],
     },
     rollupOptions: {
       external: ["react", "react-dom"],

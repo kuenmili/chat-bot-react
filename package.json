@@ -1,15 +1,15 @@
 {
   "name": "zentis-chat-widget",
-  "version": "1.0.9",
-  "main": "dist/zentis-chat-widget-webc.umd.js",
-  "module": "src/index.tsx",
-  "types": "src/index.tsx",
+  "version": "1.0.11",
+  "main": "dist/zentis-chat-widget.umd.js",
+  "module": "dist/zentis-chat-widget.es.js",
+  "types": "src/index.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build && tsc -p tsconfig.build.json",
     "start": "vite preview"
   },
   "peerDependencies": {

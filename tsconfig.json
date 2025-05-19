@@ -14,6 +14,6 @@
     "module": "ESNext",
     "moduleResolution": "Node"
   },
-  "include": ["src", "zentis-webcomponent.tsx"],
+  "include": ["src"],
   "exclude": ["node_modules"]
 }
