@@ -9,25 +9,18 @@ import DrugsMenu from "./components/DrugsMenu";
 import DrugsPanel from "./components/DrugsPanel";
 
 interface MainChatProps {
-  apiKey: string;
-  doctor: any;
-  chatType: "clinical" | "differential" | "drugs";
+  apiKey?: string;
+  doctor?: any;
   close: () => void;
-  endpoint: string;
+  endpoint?: string;
 }
 
-const MainChat: React.FC<MainChatProps> = ({
-  apiKey,
-  doctor,
-  chatType,
-  close,
-  endpoint,
-}) => {
+const MainChat: React.FC<MainChatProps> = ({ apiKey, doctor, endpoint }) => {
+  if (!apiKey || !endpoint) return;
   // 1. El hook se usa acá, recibe los props desde el Popup
   const flow = useZentisFlow({
     apiKey,
     doctor,
-    chatType,
     endpoint,
   });
 

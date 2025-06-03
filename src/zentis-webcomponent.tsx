@@ -1,61 +1,134 @@
-// src/zentis-webcomponent.tsx
-
-import React from "react";
-import * as ReactDOM from "react-dom";
+import { createRoot, Root } from "react-dom/client";
 import ZentisChatWidget, { ZentisProps } from "./ZentisChatWidget";
 
-const toCamel = (s: string) =>
-  s.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
-
 class ZentisWebComponent extends HTMLElement {
-  static get observedAttributes() {
-    return ["endpoint", "api-key", "doctor", "chat-type"];
-  }
+  private _endpoint: string = "";
+  private _apiKey: string = "";
+  private _doctor: any = {};
+  private _metadata: any = {};
 
-  // aquí indicamos que props acumulará de forma parcial las Props
-  private props: Partial<ZentisProps> = {};
+  private reactRoot: Root | null = null;
 
   constructor() {
     super();
-    const attrs = (this.constructor as typeof ZentisWebComponent)
-      .observedAttributes;
-    attrs.forEach((attr) => {
-      const val = this.getAttribute(attr);
-      if (val != null) {
-        const key = toCamel(attr) as keyof ZentisProps;
-        try {
-          this.props[key] = JSON.parse(val);
-        } catch {
-          this.props[key] = val as any;
-        }
-      }
-    });
-  }
-
-  attributeChangedCallback(name: string, _old: string, value: string) {
-    const key = toCamel(name) as keyof ZentisProps;
-    try {
-      this.props[key] = JSON.parse(value);
-    } catch {
-      this.props[key] = value as any;
-    }
-    this.render();
   }
 
   connectedCallback() {
-    this.render();
+    if (!this.reactRoot) {
+      this.reactRoot = createRoot(this);
+    }
   }
 
   disconnectedCallback() {
-    const R = ReactDOM as any;
-    R.unmountComponentAtNode(this);
+    if (this.reactRoot) {
+      this.reactRoot.unmount();
+      this.reactRoot = null;
+    }
   }
 
-  render() {
-    const R = ReactDOM as any;
+  get endpoint(): string {
+    return this._endpoint;
+  }
+  set endpoint(value: string) {
+    this._endpoint = value;
+    this.renderIfInitialized();
+    this.dispatchEvent(new CustomEvent("endpoint-changed", { detail: value }));
+  }
 
-    // —— Aquí el cast a `any`, o a `ZentisProps` si prefieres:
-    R.render(<ZentisChatWidget {...(this.props as ZentisProps)} />, this);
+  get apiKey(): string {
+    return this._apiKey;
+  }
+  set apiKey(value: string) {
+    this._apiKey = value;
+    this.renderIfInitialized();
+    this.dispatchEvent(new CustomEvent("api-key-changed", { detail: value }));
+  }
+
+  get doctor(): any {
+    return this._doctor;
+  }
+  set doctor(value: any) {
+    this._doctor = value;
+    this.renderIfInitialized();
+    this.dispatchEvent(new CustomEvent("doctor-changed", { detail: value }));
+  }
+
+  get metadata(): any {
+    return this._metadata;
+  }
+  set metadata(value: any) {
+    this._metadata = value;
+    this.renderIfInitialized();
+    this.dispatchEvent(new CustomEvent("metadata-changed", { detail: value }));
+  }
+
+  //
+  // === MÉTODOS PÚBLICOS ===
+  //
+
+  /**
+   * init: método que debe invocarse primero para pasar apiKey y endpoint.
+   * Hasta que no se llame, el chat NO se renderiza.
+   */
+  public init(apiKey: string, endpoint: string) {
+    this._apiKey = apiKey;
+    this._endpoint = endpoint;
+    // Llamamos a un render completo (solo si tenemos root creado)
+    this.renderIfInitialized();
+    this.dispatchEvent(
+      new CustomEvent("chat-initialized", {
+        detail: { apiKey: this._apiKey, endpoint: this._endpoint },
+      })
+    );
+  }
+
+  /**
+   * setDoctor: cambia el doctor y vuelve a renderizar (si ya hubo init).
+   */
+  public setDoctor(doctor: any) {
+    this._doctor = doctor;
+    this.renderIfInitialized();
+    this.dispatchEvent(new CustomEvent("doctor-changed", { detail: doctor }));
+  }
+
+  /**
+   * setMetadata: cambia la metadata y vuelve a renderizar (si ya hubo init).
+   */
+  public setMetadata(metadata: any) {
+    this._metadata = metadata;
+    this.renderIfInitialized();
+    this.dispatchEvent(
+      new CustomEvent("metadata-changed", { detail: metadata })
+    );
+  }
+  //
+  // === LÓGICA INTERNA DE RENDERIZADO ===
+  //
+
+  /**
+   * Este método comprueba si ya se llamó a init (es decir, apiKey y endpoint no están vacíos).
+   * Si no se ha llamado, NO hacemos nada (no renderizamos).
+   * Si ya se ha llamado, hacemos un render de React pasándole los props actuales.
+   */
+  private renderIfInitialized() {
+    // Verificamos que apiKey y endpoint no sean cadenas vacías (o null/undefined).
+    if (!this._apiKey || !this._endpoint) {
+      // Si aún no se ha inicializado, no renderizamos nada.
+      return;
+    }
+
+    // Preparamos el objeto ZentisProps completo
+    const props: ZentisProps = {
+      endpoint: this._endpoint,
+      apiKey: this._apiKey,
+      doctor: this._doctor,
+      metadata: this._metadata,
+    };
+
+    // Renderizamos con React 18
+    if (this.reactRoot) {
+      this.reactRoot.render(<ZentisChatWidget {...props} />);
+    }
   }
 }
 

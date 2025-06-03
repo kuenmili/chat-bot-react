@@ -20,20 +20,18 @@ interface UseZentisFlowParams {
   apiKey: string;
   doctor: any;
   endpoint: string;
-  chatType: Mode;
 }
 
 export const useZentisFlow = ({
   apiKey,
   doctor,
   endpoint,
-  chatType,
 }: UseZentisFlowParams) => {
   const [step, setStep] = useState<FlowStep>("login");
   const [user, setUser] = useState<{ name: string; email: string } | null>(
     null
   );
-  const [mode, setMode] = useState<Mode | null>(chatType);
+  const [mode, setMode] = useState<Mode>("clinical");
   const [chat, setChat] = useState<ChatMessage[]>([]);
   const [drugPanel, setDrugPanel] = useState<string | null>(null);
   // ENVÍA al backend real y actualiza chat
@@ -43,7 +41,7 @@ export const useZentisFlow = ({
     drugs: `${endpoint}/drugs`,
   };
   const sendMessage = async (msg: string) => {
-    const realMode = mode ?? chatType;
+    const realMode = mode;
 
     setChat((chat) => [
       ...chat,
@@ -100,7 +98,6 @@ export const useZentisFlow = ({
 
   function goHome() {
     setStep("home");
-    setMode(chatType);
     setChat([]);
     setDrugPanel(null);
   }
